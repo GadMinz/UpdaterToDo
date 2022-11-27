@@ -1,0 +1,30 @@
+@import "~normalize.css";
+@import "variables";
+
+*,
+*:after,
+*:before {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  outline: none;
+  border: none;
+  box-sizing: border-box;
+}
+
+a:active,
+a:hover,
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+body {
+  background-color: $bg-primary;
+  font-family: "Inter", sans-serif;
+  color: $text-primary;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
