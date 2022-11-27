@@ -19,7 +19,9 @@ a {
   color: inherit;
 }
 
-body {
+html,body {
+  height: 100%;
+  width: 100%;
   background-color: $bg-primary;
   font-family: "Inter", sans-serif;
   color: $text-primary;

@@ -1,0 +1,12 @@
+@import "../../scss/variables";
+
+.main {
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $bg-secondary;
+  border-radius: 0 0 10px 10px;
+}
