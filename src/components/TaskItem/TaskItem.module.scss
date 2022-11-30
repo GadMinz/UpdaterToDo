@@ -1,0 +1,13 @@
+@import "../../scss/variables";
+
+.item {
+  background-color: $bg-primary;
+  border-radius: 5px;
+  padding: 5px 10px;
+  box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  font-weight: 400;
+  &:hover {
+    background-color: #f2f2f2;
+  }
+}

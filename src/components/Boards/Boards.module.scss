@@ -1,7 +1,7 @@
 @import "../../scss/variables";
 
 .boards {
-  margin: 0 auto;
+  margin: 10px auto;
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
@@ -11,9 +11,11 @@
   width: 33%;
   background-color: $bg-secondary;
   border-radius: 5px;
+  padding: 10px;
   &_title {
     text-align: center;
     font-weight: 500;
     padding: 5px;
+    margin-bottom: 10px;
   }
 }
