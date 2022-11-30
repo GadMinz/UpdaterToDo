@@ -9,5 +9,8 @@
     font-size: 30px;
     font-weight: 600;
     color: #ff9000;
+    &:hover {
+      color: lighten(#ff9000, 5);
+    }
   }
 }
