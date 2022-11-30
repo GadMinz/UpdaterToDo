@@ -2,13 +2,9 @@ import React from "react";
 import s from "./ProjectList.module.scss";
 import ProjectListItem from "./ProjectListItem";
 import ProjectCreate from "./ProjectCreate";
+import {TProject} from "../../types/project";
 
 interface ProjectListProps {}
-
-export type TProject = {
-  id: string;
-  title: string;
-};
 
 const ProjectList: React.FC<ProjectListProps> = () => {
   const [projects, setProjects] = React.useState<TProject[]>(

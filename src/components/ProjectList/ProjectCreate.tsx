@@ -1,8 +1,8 @@
 import React from "react";
 import s from "./ProjectList.module.scss";
 import { v4 as uuidv4 } from "uuid";
-import { TProject } from ".";
 import GlobalSvgSelector from "../../assets/icons/GlobalSvgSelector";
+import {TProject} from "../../types/project";
 
 interface ProjectCreateProps {
   addProject: (item: TProject) => void;
