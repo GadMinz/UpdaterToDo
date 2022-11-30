@@ -6,15 +6,20 @@ import { Link } from "react-router-dom";
 interface ProjectListItemProps {
   id: string;
   title: string;
+  deleteProject: (id: string) => void;
 }
 
-const ProjectListItem: React.FC<ProjectListItemProps> = ({ id, title }) => {
+const ProjectListItem: React.FC<ProjectListItemProps> = ({
+  id,
+  title,
+  deleteProject,
+}) => {
   return (
     <div className={s.project}>
       <Link to={"/" + id} className={s.project_title}>
         {title}
       </Link>
-      <button className={s.project_delete}>
+      <button onClick={() => deleteProject(id)} className={s.project_delete}>
         <GlobalSvgSelector id="x" />
       </button>
     </div>

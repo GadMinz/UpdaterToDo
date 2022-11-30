@@ -21,10 +21,19 @@ const ProjectList: React.FC<ProjectListProps> = () => {
   const addProject = (item: TProject) => {
     setProjects((prevState) => [...prevState, item]);
   };
+  const deleteProject = (id: string) => {
+    if (window.confirm("Delete project?")) {
+      setProjects((prevState) => prevState.filter((item) => item.id !== id));
+    }
+  };
   return (
     <div className={s.wrapper}>
       {projects.map((project) => (
-        <ProjectListItem key={project.id} {...project} />
+        <ProjectListItem
+          key={project.id}
+          deleteProject={deleteProject}
+          {...project}
+        />
       ))}
       <ProjectCreate addProject={addProject} />
     </div>
