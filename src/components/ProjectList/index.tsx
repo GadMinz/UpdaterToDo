@@ -5,20 +5,20 @@ import ProjectCreate from "./ProjectCreate";
 
 interface ProjectListProps {}
 
-export type ProjectT = {
+export type TProject = {
   id: string;
   title: string;
 };
 
 const ProjectList: React.FC<ProjectListProps> = () => {
-  const [projects, setProjects] = React.useState<ProjectT[]>(
+  const [projects, setProjects] = React.useState<TProject[]>(
     JSON.parse(localStorage.getItem("projects") || "null") || []
   );
   React.useEffect(() => {
     localStorage.setItem("projects", JSON.stringify(projects));
   }, [projects]);
 
-  const addProject = (item: ProjectT) => {
+  const addProject = (item: TProject) => {
     setProjects((prevState) => [...prevState, item]);
   };
   return (
