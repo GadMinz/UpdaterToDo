@@ -37,4 +37,47 @@
     align-items: center;
     justify-content: center;
   }
+  &_create {
+    .button {
+      width: 100%;
+      padding: 15px 10px;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 10px;
+      background: none;
+      opacity: 0.7;
+      &:hover {
+        background-color: #091e4214;
+        opacity: 1;
+      }
+    }
+    form {
+      display: flex;
+      justify-content: space-between;
+      background-color: $bg-primary;
+      border-radius: 10px;
+      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.25);
+      &:hover {
+        background-color: #f2f2f2;
+      }
+      button {
+        display: flex;
+        background-color: #96e250;
+        border-left: 1px solid #ffffff;
+        border-radius: 0 10px 10px 0;
+        cursor: pointer;
+        width: 44px;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+      input {
+        border-radius: 10px 0 0 10px;
+        padding: 15px 10px;
+        flex: 1;
+      }
+    }
+  }
 }

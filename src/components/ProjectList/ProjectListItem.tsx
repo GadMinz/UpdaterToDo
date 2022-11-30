@@ -2,10 +2,11 @@ import React from "react";
 import s from "./ProjectList.module.scss";
 
 interface ProjectListItemProps {
+  id: string;
   title: string;
 }
 
-const ProjectListItem: React.FC<ProjectListItemProps> = ({ title }) => {
+const ProjectListItem: React.FC<ProjectListItemProps> = ({ id, title }) => {
   return (
     <div className={s.project}>
       <div className={s.project_title}>{title}</div>
