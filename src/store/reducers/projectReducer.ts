@@ -1,11 +1,8 @@
-import { ProjectState } from "../../types/project";
-
-const FETCH_TASKS = "FETCH_TASKS";
-
-interface ProjectAction {
-  type: string;
-  payload?: any;
-}
+import {
+  ProjectAction,
+  ProjectActionTypes,
+  ProjectState,
+} from "../../types/project";
 
 const initialState: ProjectState = {
   project: {
@@ -17,9 +14,10 @@ const initialState: ProjectState = {
 
 export const projectReducer = (state = initialState, action: ProjectAction) => {
   switch (action.type) {
-    case "FETCH_TASKS":
+    case ProjectActionTypes.SET_PROJECT:
       return {
-        tasks: [],
+        ...state,
+        project: action.payload,
       };
     default:
       return state;
