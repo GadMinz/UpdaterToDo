@@ -1,0 +1,23 @@
+.tools {
+  display: flex;
+  margin-bottom: 10px;
+  width: 100%;
+  justify-content: space-between;
+  button {
+    padding: 5px;
+    border-radius: 5px;
+    background: #96e250;
+    &:hover {
+      background: lighten(#96e250, 5);
+    }
+  }
+  input {
+    height: 32px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #ffffff;
+  }
+}

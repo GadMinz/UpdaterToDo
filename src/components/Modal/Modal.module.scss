@@ -1,0 +1,43 @@
+@import "../../scss/variables";
+
+.overlay {
+  display: none;
+  align-items: center;
+  background-color: $bg-overlay;
+  height: 100%;
+  justify-content: center;
+  left: 0;
+  overflow-y: auto;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  &.active {
+    display: flex;
+  }
+}
+
+.modal {
+  border-radius: 5px;
+  padding: 20px;
+  background-color: $bg-secondary;
+  position: relative;
+  &_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: none;
+    cursor: pointer;
+    width: 16px;
+    &:hover {
+      svg {
+        path {
+          stroke: #ff9000;
+        }
+      }
+    }
+  }
+}

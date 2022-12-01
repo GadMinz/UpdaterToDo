@@ -4,6 +4,7 @@ import Boards from "../../components/Boards";
 import { useLocation, useNavigate } from "react-router-dom";
 import { ProjectActionTypes, TProject } from "../../types/project";
 import { useAppDispatch } from "../../hook";
+import ProjectTools from "../../components/ProjectTools";
 
 interface ProjectProps {}
 
@@ -20,8 +21,10 @@ const Project: React.FC<ProjectProps> = () => {
     }
     dispatch({ type: ProjectActionTypes.SET_PROJECT, payload: project });
   }, []);
+
   return (
-    <div>
+    <div className={s.project}>
+      <ProjectTools />
       <Boards />
     </div>
   );

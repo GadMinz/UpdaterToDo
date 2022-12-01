@@ -1,8 +1,6 @@
 @import "../../scss/variables";
 
 .boards {
-  margin: 10px auto;
-  max-width: 1200px;
   display: flex;
   justify-content: space-between;
 }
@@ -12,10 +10,33 @@
   background-color: $bg-secondary;
   border-radius: 5px;
   padding: 10px;
+  position: relative;
+
   &_title {
     text-align: center;
     font-weight: 500;
     padding: 5px;
     margin-bottom: 10px;
+  }
+
+  &_add {
+    padding: 5px;
+    position: absolute;
+    width: 28px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 10px;
+    right: 10px;
+    opacity: 0.8;
+    cursor: pointer;
+
+    &:hover {
+      svg {
+        fill: #ff9000;
+      }
+    }
   }
 }

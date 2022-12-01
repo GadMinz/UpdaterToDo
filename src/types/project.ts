@@ -8,7 +8,7 @@ export type TTask = {
   project: string;
   title: string;
   description: string;
-  status: "queue" | "development" | "done";
+  status: "Queue" | "Development" | "Done";
 };
 
 export type ProjectState = {

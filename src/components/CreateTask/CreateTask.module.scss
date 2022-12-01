@@ -1,0 +1,53 @@
+@import "../../scss/variables";
+
+.wrapper {
+  min-width: 300px;
+}
+
+.create {
+  &_title {
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  &_form {
+    text-align: center;
+
+    input {
+      width: 100%;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    textarea {
+      width: 100%;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 10px;
+      resize: none;
+      margin-bottom: 10px;
+    }
+
+    select {
+      display: block;
+      width: 100%;
+      padding: 5px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      width: 80%;
+      border-radius: 5px;
+      font-size: 24px;
+      font-weight: 500;
+      padding: 10px;
+      background-color: #96e250;
+      margin-top: 10px;
+    }
+  }
+}
