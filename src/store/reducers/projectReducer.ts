@@ -12,12 +12,20 @@ const initialState: ProjectState = {
   tasks: [],
 };
 
-export const projectReducer = (state = initialState, action: ProjectAction) => {
+export const projectReducer = (
+  state = initialState,
+  action: ProjectAction
+): ProjectState => {
   switch (action.type) {
     case ProjectActionTypes.SET_PROJECT:
       return {
         ...state,
         project: action.payload,
+      };
+    case ProjectActionTypes.ADD_TASK:
+      return {
+        ...state,
+        tasks: [...state.tasks, action.payload],
       };
     default:
       return state;

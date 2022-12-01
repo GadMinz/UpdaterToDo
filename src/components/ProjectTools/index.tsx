@@ -14,7 +14,7 @@ const ProjectTools: React.FC<ProjectToolsProps> = () => {
           <input type="text" placeholder='Поиск...'/>
       </div>
       <Modal setOpen={setOpen} isOpen={open}>
-        <CreateTask />
+        <CreateTask setOpen={setOpen}/>
       </Modal>
     </>
   );
