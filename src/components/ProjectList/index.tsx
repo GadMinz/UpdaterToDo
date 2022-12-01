@@ -2,16 +2,17 @@ import React from "react";
 import s from "./ProjectList.module.scss";
 import ProjectListItem from "./ProjectListItem";
 import ProjectCreate from "./ProjectCreate";
-import {TProject} from "../../types/project";
+import { TProject } from "../../types/project";
+import {getLocalProjects, updateLocalProjects} from "../../localStorage";
 
 interface ProjectListProps {}
 
 const ProjectList: React.FC<ProjectListProps> = () => {
   const [projects, setProjects] = React.useState<TProject[]>(
-    JSON.parse(localStorage.getItem("projects") || "null") || []
+    getLocalProjects() || []
   );
   React.useEffect(() => {
-    localStorage.setItem("projects", JSON.stringify(projects));
+    updateLocalProjects(projects);
   }, [projects]);
 
   const addProject = (item: TProject) => {

@@ -22,6 +22,11 @@ export const projectReducer = (
         ...state,
         project: action.payload,
       };
+    case ProjectActionTypes.SET_TASKS:
+      return {
+        ...state,
+        tasks: action.payload,
+      };
     case ProjectActionTypes.ADD_TASK:
       return {
         ...state,

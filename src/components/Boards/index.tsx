@@ -1,18 +1,31 @@
 import React from "react";
 import s from "./Boards.module.scss";
 import Board from "./Board";
+import { useAppSelector } from "../../hook";
+import { TTask } from "../../types/project";
+import { updateLocalTasks } from "../../localStorage";
 
-interface BoardsProps {
+interface BoardsProps {}
 
-}
-
-const boards = ["Queue", "Development", "Done"];
+const boards = [
+  { id: "queue", title: "Queue" },
+  { id: "development", title: "Development" },
+  { id: "done", title: "Done" },
+];
 
 const Boards: React.FC<BoardsProps> = ({}) => {
+  const { project, tasks } = useAppSelector((state) => state.project);
+  React.useEffect(() => {
+    updateLocalTasks(project.id, tasks);
+  }, [tasks]);
   return (
     <div className={s.boards}>
       {boards.map((board, i) => (
-        <Board key={i} title={board}/>
+        <Board
+          key={i}
+          title={board.title}
+          tasks={tasks.filter((task: TTask) => task.status === board.id)}
+        />
       ))}
     </div>
   );
