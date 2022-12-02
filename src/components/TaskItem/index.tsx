@@ -2,6 +2,8 @@ import React from "react";
 import s from "./TaskItem.module.scss";
 import { TTask } from "../../types/project";
 import { Draggable } from "react-beautiful-dnd";
+import Modal from "../Modal/Modal";
+import EditTask from "../EditTask";
 import GlobalSvgSelector from "../../assets/icons/GlobalSvgSelector";
 
 interface TaskItemProps {
@@ -11,6 +13,7 @@ interface TaskItemProps {
 }
 
 const TaskItem: React.FC<TaskItemProps> = ({ task, index, deleteTask }) => {
+  const [isOpen, setOpen] = React.useState<boolean>(false);
   return (
     <>
       <Draggable draggableId={task.id} index={index}>
@@ -25,7 +28,7 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, deleteTask }) => {
             {...provided.dragHandleProps}
             ref={provided.innerRef}
           >
-            <div className={s.item_title}>
+            <div className={s.item_title} onClick={() => setOpen(true)}>
               {task.title}
             </div>
             <button
@@ -37,6 +40,11 @@ const TaskItem: React.FC<TaskItemProps> = ({ task, index, deleteTask }) => {
           </div>
         )}
       </Draggable>
+      {isOpen && (
+        <Modal setOpen={setOpen} isOpen={isOpen}>
+          <EditTask task={task} />
+        </Modal>
+      )}
     </>
   );
 };
