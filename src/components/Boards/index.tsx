@@ -42,8 +42,19 @@ const Boards: React.FC<BoardsProps> = ({}) => {
       destination.droppableId !== "queue" &&
       destination.droppableId !== "development" &&
       destination.droppableId !== "done"
-    )
+    ) {
       return;
+    }
+    if (destination.droppableId === "queue") {
+      task.started = null;
+      task.done = null;
+    }
+    if (destination.droppableId === "development") {
+      task.started = new Date().valueOf();
+    }
+    if (destination.droppableId === "done") {
+      task.done = new Date().valueOf();
+    }
     task.status = destination.droppableId;
     dispatch({ type: ProjectActionTypes.UPDATE_TASK, payload: task });
   };

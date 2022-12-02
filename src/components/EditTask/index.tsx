@@ -40,7 +40,7 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
         <li>Created: {created}</li>
         {started && (
           <li>
-            {done ? "Was" : "in"} develop: {started}
+            {done ? "Was" : "In"} develop: {started}
           </li>
         )}
         {done && <li>Done: {done}</li>}
