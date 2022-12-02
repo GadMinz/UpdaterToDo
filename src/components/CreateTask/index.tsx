@@ -24,7 +24,12 @@ const CreateTask: React.FC<CreateTaskProps> = ({ setOpen }) => {
       description,
       status: "queue",
       priority,
+      subtasks: [],
+      attachments: [],
+      comments: [],
       created,
+      started: null,
+      done: null,
     };
     dispatch({ type: ProjectActionTypes.ADD_TASK, payload: item });
     setTitle("");

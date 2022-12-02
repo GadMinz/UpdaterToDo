@@ -10,7 +10,12 @@ export type TTask = {
   description: string;
   status: "queue" | "development" | "done";
   priority: string;
+  attachments: [];
+  comments: [];
+  subtasks: [];
   created: number;
+  started: number | null;
+  done: number | null;
 };
 
 export type ProjectState = {
