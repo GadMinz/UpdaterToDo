@@ -2,6 +2,7 @@ import {
   ProjectAction,
   ProjectActionTypes,
   ProjectState,
+  TTask,
 } from "../../types/project";
 
 const initialState: ProjectState = {
@@ -32,6 +33,19 @@ export const projectReducer = (
         ...state,
         tasks: [...state.tasks, action.payload],
       };
+    case ProjectActionTypes.UPDATE_TASK:
+      let data = action.payload;
+      const updateTasks: TTask[] = state.tasks.map((item) => {
+        if (item.id === data.id) {
+          return item;
+        }
+        return item;
+      });
+      return {
+        ...state,
+        tasks: updateTasks,
+      };
+
     default:
       return state;
   }

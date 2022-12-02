@@ -22,6 +22,7 @@ export enum ProjectActionTypes {
   SET_PROJECT = "SET_PROJECT",
   SET_TASKS = "SET_TASKS",
   ADD_TASK = "ADD_TASK",
+  UPDATE_TASK = "UPDATE_TASK",
 }
 
 interface SetProjectAction {
@@ -39,4 +40,13 @@ interface AddTaskAction {
   payload: TTask;
 }
 
-export type ProjectAction = SetProjectAction | SetTasksAction | AddTaskAction;
+interface UpdateTaskAction {
+  type: ProjectActionTypes.UPDATE_TASK;
+  payload: TTask;
+}
+
+export type ProjectAction =
+  | SetProjectAction
+  | SetTasksAction
+  | AddTaskAction
+  | UpdateTaskAction;

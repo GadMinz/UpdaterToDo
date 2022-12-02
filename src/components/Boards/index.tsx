@@ -1,33 +1,65 @@
 import React from "react";
 import s from "./Boards.module.scss";
 import Board from "./Board";
-import { useAppSelector } from "../../hook";
-import { TTask } from "../../types/project";
+import { useAppDispatch, useAppSelector } from "../../hook";
+import { ProjectActionTypes, TTask } from "../../types/project";
 import { updateLocalTasks } from "../../localStorage";
+import { DragDropContext, DropResult } from "react-beautiful-dnd";
 
 interface BoardsProps {}
 
-const boards = [
+type TBoard = {
+  id: "queue" | "development" | "done";
+  title: string;
+};
+const boards: TBoard[] = [
   { id: "queue", title: "Queue" },
   { id: "development", title: "Development" },
   { id: "done", title: "Done" },
 ];
 
 const Boards: React.FC<BoardsProps> = ({}) => {
+  const dispatch = useAppDispatch();
   const { project, tasks } = useAppSelector((state) => state.project);
+
   React.useEffect(() => {
     updateLocalTasks(project.id, tasks);
   }, [tasks]);
+
+  const onDragEnd = (result: DropResult) => {
+    const { source, destination, draggableId } = result;
+    if (!destination) return;
+    if (source.droppableId === destination.droppableId) return;
+    if (
+      source.droppableId === destination.droppableId &&
+      source.index === destination.index
+    ) {
+      return;
+    }
+    const task = tasks.find((task) => task.id === draggableId);
+    if (!task) return;
+    if (
+      destination.droppableId !== "queue" &&
+      destination.droppableId !== "development" &&
+      destination.droppableId !== "done"
+    )
+      return;
+    task.status = destination.droppableId;
+    dispatch({ type: ProjectActionTypes.UPDATE_TASK, payload: task });
+  };
+
   return (
-    <div className={s.boards}>
-      {boards.map((board, i) => (
-        <Board
-          key={i}
-          title={board.title}
-          tasks={tasks.filter((task: TTask) => task.status === board.id)}
-        />
-      ))}
-    </div>
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className={s.boards}>
+        {boards.map((board, i) => (
+          <Board
+            key={i}
+            {...board}
+            tasks={tasks.filter((task: TTask) => task.status === board.id)}
+          />
+        ))}
+      </div>
+    </DragDropContext>
   );
 };
 

@@ -8,7 +8,16 @@
   cursor: pointer;
   font-weight: 400;
   margin-bottom: 10px;
+
   &:hover {
     background-color: #f2f2f2;
   }
+}
+
+.high {
+  border: 1px solid #e26150;
+}
+
+.medium {
+  border: 1px solid #f7ff00;
 }
