@@ -33,6 +33,12 @@ export const projectReducer = (
         ...state,
         tasks: [...state.tasks, action.payload],
       };
+    case ProjectActionTypes.DELETE_TASK:
+      const newTasks = state.tasks.filter((task) => task.id !== action.payload);
+      return {
+        ...state,
+        tasks: newTasks,
+      };
     case ProjectActionTypes.UPDATE_TASK:
       let data = action.payload;
       const updateTasks: TTask[] = state.tasks.map((item) => {

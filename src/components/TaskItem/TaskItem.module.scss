@@ -3,14 +3,35 @@
 .item {
   background-color: $bg-primary;
   border-radius: 5px;
-  padding: 5px 10px;
+  margin-bottom: 10px;
   box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.25);
   cursor: pointer;
-  font-weight: 400;
-  margin-bottom: 10px;
-
+  display: flex;
+  justify-content: space-between;
   &:hover {
     background-color: #f2f2f2;
+    .item_delete {
+      display: flex;
+      &:hover {
+        background-color: #e26150;
+      }
+    }
+  }
+
+  &_title {
+    font-weight: 400;
+    padding: 5px 10px;
+    flex: 1;
+  }
+
+  &_delete {
+    display: none;
+    border-left: 1px solid #ffffff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    width: 24px;
+    align-items: center;
+    justify-content: center;
   }
 }
 
