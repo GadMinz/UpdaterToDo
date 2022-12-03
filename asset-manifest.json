@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/updater-todos/static/css/main.50ff53e2.css",
+    "main.js": "/updater-todos/static/js/main.502ab8f8.js",
+    "ucare-widget-chunk.js": "/updater-todos/static/js/ucare-widget-chunk.f1268bec.chunk.js",
+    "ucare-panel-chunk.js": "/updater-todos/static/js/ucare-panel-chunk.ef4e9fc9.chunk.js",
+    "static/js/396.2690bd94.chunk.js": "/updater-todos/static/js/396.2690bd94.chunk.js",
+    "index.html": "/updater-todos/index.html",
+    "main.50ff53e2.css.map": "/updater-todos/static/css/main.50ff53e2.css.map",
+    "main.502ab8f8.js.map": "/updater-todos/static/js/main.502ab8f8.js.map",
+    "ucare-widget-chunk.f1268bec.chunk.js.map": "/updater-todos/static/js/ucare-widget-chunk.f1268bec.chunk.js.map",
+    "ucare-panel-chunk.ef4e9fc9.chunk.js.map": "/updater-todos/static/js/ucare-panel-chunk.ef4e9fc9.chunk.js.map",
+    "396.2690bd94.chunk.js.map": "/updater-todos/static/js/396.2690bd94.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.50ff53e2.css",
+    "static/js/main.502ab8f8.js"
+  ]
+}
