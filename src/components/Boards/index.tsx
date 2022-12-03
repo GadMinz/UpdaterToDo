@@ -21,6 +21,7 @@ const boards: TBoard[] = [
 const Boards: React.FC<BoardsProps> = ({}) => {
   const dispatch = useAppDispatch();
   const { project, tasks } = useAppSelector((state) => state.project);
+  const { searchValue } = useAppSelector((state) => state.filter);
 
   React.useEffect(() => {
     updateLocalTasks(project.id, tasks);
@@ -68,7 +69,12 @@ const Boards: React.FC<BoardsProps> = ({}) => {
           <Board
             key={i}
             {...board}
-            tasks={tasks.filter((task: TTask) => task.status === board.id)}
+            tasks={tasks.filter(
+              (task: TTask) =>
+                task.status === board.id &&
+                (task.title.toLowerCase().includes(searchValue.toLowerCase()) ||
+                  task.id.includes(searchValue))
+            )}
           />
         ))}
       </div>
