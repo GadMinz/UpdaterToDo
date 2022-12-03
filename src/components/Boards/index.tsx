@@ -51,6 +51,7 @@ const Boards: React.FC<BoardsProps> = ({}) => {
     }
     if (destination.droppableId === "development") {
       task.started = new Date().valueOf();
+      task.done = null;
     }
     if (destination.droppableId === "done") {
       task.done = new Date().valueOf();

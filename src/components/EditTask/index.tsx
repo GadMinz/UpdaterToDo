@@ -1,5 +1,7 @@
 import React from "react";
 import s from "./EditTask.module.scss";
+import moment from "moment";
+
 import { TTask } from "../../types/project";
 
 interface EditTaskProps {
@@ -37,13 +39,18 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
           Priority: {priority}
         </li>
         <li>Status: {status}</li>
-        <li>Created: {created}</li>
+        <li>Created: {moment(created).format("DD.MM.YYYY HH:mm")}</li>
         {started && (
           <li>
-            {done ? "Was" : "In"} develop: {started}
+            {done ? "Was been in" : "In"} development since:{" "}
+            {moment(started).format("DD.MM.YYYY HH:mm")} (
+            {done
+              ? moment.duration(moment(done).diff(started)).humanize()
+              : moment(started).fromNow(true)}
+            )
           </li>
         )}
-        {done && <li>Done: {done}</li>}
+        {done && <li>Done: {moment(done).format("DD.MM.YYYY HH:mm")}</li>}
       </ul>
       <div className={s.edit_desc}>
         <div className={s.edit_subtitle}>Description</div>
