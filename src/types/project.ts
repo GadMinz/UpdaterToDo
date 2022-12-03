@@ -13,6 +13,11 @@ export type TFile = {
   url: string;
   size: number;
 };
+export type  TComment = {
+    id: string;
+    content: string;
+    parent: string;
+}
 export type TTask = {
   id: string;
   project: string;
@@ -21,7 +26,7 @@ export type TTask = {
   status: "queue" | "development" | "done";
   priority: string;
   attachments: TFile[];
-  comments: [];
+  comments: TComment[];
   subtasks: TSubtask[];
   created: number;
   started: number | null;
@@ -55,6 +60,7 @@ interface AddTaskAction {
   type: ProjectActionTypes.ADD_TASK;
   payload: TTask;
 }
+
 interface DeleteTaskAction {
   type: ProjectActionTypes.DELETE_TASK;
   payload: string;

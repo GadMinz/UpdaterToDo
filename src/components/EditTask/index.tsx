@@ -3,6 +3,7 @@ import s from "./EditTask.module.scss";
 import moment from "moment";
 import {
   ProjectActionTypes,
+  TComment,
   TFile,
   TSubtask,
   TTask,
@@ -12,6 +13,7 @@ import { useAppDispatch } from "../../hook";
 import Subtask from "../Subtask";
 import { FileInfo, Widget } from "@uploadcare/react-widget";
 import File from "./File";
+import Comment from "../Comment/Comment";
 
 interface EditTaskProps {
   task: TTask;
@@ -85,6 +87,18 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       payload: { ...task, attachments: newFiles },
     });
   };
+
+  const createComment = (value: string, parent?: string) => {
+    const comment: TComment = {
+      id: new Date().valueOf().toString(),
+      parent: parent ? parent : "",
+      content: value,
+    };
+    dispatch({
+      type: ProjectActionTypes.UPDATE_TASK,
+      payload: { ...task, comments: [...comments, comment] },
+    });
+  };
   return (
     <div className={s.edit}>
       <TextArea rows={2} initialValue={title} onSave={onUpdateTitle}>
@@ -150,9 +164,14 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       </div>
       <div className={s.edit_comments}>
         <div className={s.edit_comments_create}>
-          <textarea rows={3} placeholder="Enter comment..."></textarea>
-          <button className={s.edit_button}>Save</button>
+          <TextArea rows={3} initialValue={""} onSave={createComment}>
+            <p>Enter comment...</p>
+          </TextArea>
         </div>
+        <div className={s.edit_subtitle}>Comments</div>
+        {comments.map((comment) => (
+          <Comment comment={comment} key={comment.id} />
+        ))}
       </div>
     </div>
   );
