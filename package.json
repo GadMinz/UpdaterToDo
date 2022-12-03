@@ -14,6 +14,7 @@
     "@types/react-dom": "^18.0.9",
     "@types/react-router-dom": "^5.3.3",
     "@types/uuid": "^9.0.0",
+    "@uploadcare/react-widget": "^2.3.0",
     "moment": "^2.29.4",
     "normalize.css": "^8.0.1",
     "react": "^18.2.0",

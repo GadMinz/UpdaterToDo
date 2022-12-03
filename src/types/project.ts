@@ -7,6 +7,12 @@ export type TSubtask = {
   title: string;
   checked: boolean;
 };
+export type TFile = {
+  uuid: string;
+  name: string;
+  url: string;
+  size: number;
+};
 export type TTask = {
   id: string;
   project: string;
@@ -14,7 +20,7 @@ export type TTask = {
   description: string;
   status: "queue" | "development" | "done";
   priority: string;
-  attachments: [];
+  attachments: TFile[];
   comments: [];
   subtasks: TSubtask[];
   created: number;

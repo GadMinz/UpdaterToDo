@@ -117,7 +117,25 @@
     }
   }
 }
-
+.file {
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5px;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  margin-top: 10px;
+  border: 1px solid #cccccc;
+  &_name {
+    font-weight: 500;
+  }
+  &:hover {
+    background-color: #cccccc;
+  }
+}
 .high,
 .medium,
 .low {

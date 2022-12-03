@@ -1,10 +1,17 @@
 import React from "react";
 import s from "./EditTask.module.scss";
 import moment from "moment";
-import { ProjectActionTypes, TSubtask, TTask } from "../../types/project";
+import {
+  ProjectActionTypes,
+  TFile,
+  TSubtask,
+  TTask,
+} from "../../types/project";
 import TextArea from "./TextArea";
 import { useAppDispatch } from "../../hook";
 import Subtask from "../Subtask";
+import { FileInfo, Widget } from "@uploadcare/react-widget";
+import File from "./File";
 
 interface EditTaskProps {
   task: TTask;
@@ -65,7 +72,19 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       payload: { ...task, subtasks: newSubtasks },
     });
   };
-
+  const createFile = (fileInfo: FileInfo) => {
+    let file: TFile = {
+      name: fileInfo.name ? fileInfo.name : "",
+      size: fileInfo.size ? fileInfo.size : 0,
+      url: fileInfo.originalUrl ? fileInfo.originalUrl : "",
+      uuid: fileInfo.uuid ? fileInfo.uuid : new Date().valueOf().toString(),
+    };
+    let newFiles = [...attachments, file];
+    dispatch({
+      type: ProjectActionTypes.UPDATE_TASK,
+      payload: { ...task, attachments: newFiles },
+    });
+  };
   return (
     <div className={s.edit}>
       <TextArea rows={2} initialValue={title} onSave={onUpdateTitle}>
@@ -107,9 +126,11 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       <div className={s.edit_files}>
         <div className={s.edit_files_title}>
           <div className={s.edit_subtitle}>Attachments</div>
-          <button className={s.edit_button}>Add file</button>
+          <Widget publicKey="7e7bf550cd49cd38bda8" onChange={createFile} />
         </div>
-        {attachments.length > 0 && <div>File</div>}
+        {attachments.map((file) => (
+          <File key={file.uuid} file={file} />
+        ))}
       </div>
       <div className={s.edit_subtasks}>
         <div className={s.edit_subtitle}>Subtasks</div>
