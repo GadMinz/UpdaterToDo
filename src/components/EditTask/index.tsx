@@ -1,10 +1,10 @@
 import React from "react";
 import s from "./EditTask.module.scss";
 import moment from "moment";
-
-import { ProjectActionTypes, TTask } from "../../types/project";
+import { ProjectActionTypes, TSubtask, TTask } from "../../types/project";
 import TextArea from "./TextArea";
 import { useAppDispatch } from "../../hook";
+import Subtask from "../Subtask";
 
 interface EditTaskProps {
   task: TTask;
@@ -38,6 +38,34 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       payload: { ...task, description: value },
     });
   };
+  const createSubtask = (value: string) => {
+    const newSubtask: TSubtask = {
+      id: new Date().valueOf().toString(),
+      title: value,
+      checked: false,
+    };
+    const newSubtasks = [...task.subtasks, newSubtask];
+    dispatch({
+      type: ProjectActionTypes.UPDATE_TASK,
+      payload: { ...task, subtasks: newSubtasks },
+    });
+  };
+  const handleSubtask = (item: TSubtask, checked: boolean) => {
+    let newSubtasks = [...task.subtasks];
+    newSubtasks[subtasks.indexOf(item)].checked = checked;
+    dispatch({
+      type: ProjectActionTypes.UPDATE_TASK,
+      payload: { ...task, subtasks: newSubtasks },
+    });
+  };
+  const deleteSubtask = (taskId: string) => {
+    let newSubtasks = subtasks.filter((subtask) => subtask.id !== taskId);
+    dispatch({
+      type: ProjectActionTypes.UPDATE_TASK,
+      payload: { ...task, subtasks: newSubtasks },
+    });
+  };
+
   return (
     <div className={s.edit}>
       <TextArea rows={2} initialValue={title} onSave={onUpdateTitle}>
@@ -85,12 +113,17 @@ const EditTask: React.FC<EditTaskProps> = ({ task }) => {
       </div>
       <div className={s.edit_subtasks}>
         <div className={s.edit_subtitle}>Subtasks</div>
-        <div className={s.edit_subtasks_list}></div>
-        <TextArea
-          rows={2}
-          initialValue=""
-          onSave={(value) => console.log(value)}
-        >
+        <div className={s.edit_subtasks_list}>
+          {subtasks.map((subtask) => (
+            <Subtask
+              key={subtask.id}
+              subtask={subtask}
+              handleSubtask={handleSubtask}
+              deleteSubtask={deleteSubtask}
+            />
+          ))}
+        </div>
+        <TextArea rows={2} initialValue="" onSave={createSubtask}>
           <button className={s.edit_button}>Add subtask</button>
         </TextArea>
       </div>

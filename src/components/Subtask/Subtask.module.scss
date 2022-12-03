@@ -1,0 +1,29 @@
+.subtask {
+  display: flex;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  align-items: center;
+  background-color: #f2f2f2;
+  justify-content: space-between;
+  &_title {
+    font-size: 18px;
+    font-weight: 500;
+    flex: 1;
+    padding: 5px;
+  }
+  &_complete {
+    text-decoration: line-through;
+  }
+  input {
+    cursor: pointer;
+    margin: 5px;
+  }
+  button {
+    padding: 5px;
+    border-radius: 0 5px 5px 0;
+    &:hover {
+      background-color: #e26150;
+    }
+  }
+}

@@ -2,7 +2,11 @@ export type TProject = {
   id: string;
   title: string;
 };
-
+export type TSubtask = {
+  id: string;
+  title: string;
+  checked: boolean;
+};
 export type TTask = {
   id: string;
   project: string;
@@ -12,7 +16,7 @@ export type TTask = {
   priority: string;
   attachments: [];
   comments: [];
-  subtasks: [];
+  subtasks: TSubtask[];
   created: number;
   started: number | null;
   done: number | null;
