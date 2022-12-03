@@ -43,7 +43,7 @@ export const projectReducer = (
       let data = action.payload;
       const updateTasks: TTask[] = state.tasks.map((item) => {
         if (item.id === data.id) {
-          return item;
+          return data;
         }
         return item;
       });

@@ -40,11 +40,6 @@
   }
 
   &_subtasks {
-    &_title {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
   }
 
   &_comments {
@@ -86,6 +81,35 @@
     font-size: 14px;
     font-weight: 400;
     color: #545454;
+  }
+
+  &_area {
+    button {
+      display: inline-block;
+      padding: 5px;
+      background: none;
+      border-radius: 5px;
+      font-size: 14px;
+      opacity: 0.8;
+      margin-right: 5px;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    textarea {
+      width: 100%;
+      border-radius: 5px;
+      font-size: 14px;
+      padding: 10px;
+      resize: none;
+      z-index: 20;
+    }
+    .save {
+      background-color: #96e250;
+    }
+    .cancel:hover {
+      background-color: #cccccc;
+    }
   }
 }
 

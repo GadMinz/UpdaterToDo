@@ -38,6 +38,7 @@ const Boards: React.FC<BoardsProps> = ({}) => {
     }
     const task = tasks.find((task) => task.id === draggableId);
     if (!task) return;
+    let updatedTask = { ...task };
     if (
       destination.droppableId !== "queue" &&
       destination.droppableId !== "development" &&
@@ -46,18 +47,18 @@ const Boards: React.FC<BoardsProps> = ({}) => {
       return;
     }
     if (destination.droppableId === "queue") {
-      task.started = null;
-      task.done = null;
+      updatedTask.started = null;
+      updatedTask.done = null;
     }
     if (destination.droppableId === "development") {
-      task.started = new Date().valueOf();
-      task.done = null;
+      updatedTask.started = new Date().valueOf();
+      updatedTask.done = null;
     }
     if (destination.droppableId === "done") {
-      task.done = new Date().valueOf();
+      updatedTask.done = new Date().valueOf();
     }
-    task.status = destination.droppableId;
-    dispatch({ type: ProjectActionTypes.UPDATE_TASK, payload: task });
+    updatedTask.status = destination.droppableId;
+    dispatch({ type: ProjectActionTypes.UPDATE_TASK, payload: updatedTask });
   };
 
   return (
