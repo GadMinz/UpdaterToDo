@@ -1,1 +1,1 @@
-# https://gadminz.github.io/updater-todos
+# https://updater-todos.vercel.app/
